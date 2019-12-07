@@ -1,0 +1,19 @@
+{
+  "name": "pwa-template",
+  "version": "0.0.1",
+  "description": "a vanilla pwa template",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quinten/pwa-template.git"
+  },
+  "author": "Quinten Clause",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Quinten/pwa-template/issues"
+  },
+  "homepage": "https://github.com/Quinten/pwa-template#readme"
+}
