@@ -7,6 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const SimpleSW = require('simple-sw');
+
 const config = require('./package');
 
 module.exports = (env, argv) => {
@@ -91,6 +93,8 @@ module.exports = (env, argv) => {
                 })
             ]
         }
+
+        webpackConfig.plugins.push(new SimpleSW( { version: config.version } ));
     }
 
     return webpackConfig;
