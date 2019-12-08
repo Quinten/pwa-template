@@ -17,7 +17,7 @@ module.exports = (env, argv) => {
         entry: './src/index.js',
 
         output: {
-            path: path.resolve(__dirname, 'pub'),
+            path: path.resolve(__dirname, 'public'),
             publicPath: '',
             filename: 'index.js'
         },
@@ -41,7 +41,7 @@ module.exports = (env, argv) => {
         ],
 
         devServer: {
-            contentBase: "./pub",
+            contentBase: "./public",
             host: "0.0.0.0",
             port: 3000
         }

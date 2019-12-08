@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "deploy": "git subtree push --prefix pub/ origin gh-pages"
+    "deploy": "git subtree push --prefix public/ origin gh-pages"
   },
   "babel": {
     "presets": [
@@ -24,11 +24,6 @@
   },
   "homepage": "https://github.com/Quinten/pwa-template#readme",
   "main": "src/index.js",
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
