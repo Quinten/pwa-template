@@ -4,6 +4,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const config = require('./package');
@@ -18,7 +19,7 @@ module.exports = (env, argv) => {
 
         output: {
             path: path.resolve(__dirname, 'public'),
-            publicPath: '',
+            publicPath: './',
             filename: 'index.js'
         },
 
@@ -37,6 +38,36 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 ...config,
                 template: 'src/index.html'
+            }),
+            new FaviconsWebpackPlugin({
+                logo: './src/icon.svg',
+                mode: 'webapp',
+                devMode: 'webapp',
+                prefix: '',
+                favicons: {
+                    path: '',
+                    background: '#ffffff',
+                    theme_color: '#ffffff',
+                    appName: config.shortName,
+                    appShortName: config.shortName,
+                    appDescription: config.description,
+                    developerName: config.author,
+                    developerURL: config.homepage,
+                    orientation: 'any',
+                    scope: './',
+                    start_url: './',
+                    version: config.version,
+                    icons: {
+                        android: true,
+                        coast: false,
+                        yandex: false,
+                        firefox: false,
+                        windows: true,
+                        appleIcon: true,
+                        appleStartup: false,
+                        favicons: true
+                    }
+                }
             })
         ],
 

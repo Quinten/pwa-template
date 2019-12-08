@@ -2,6 +2,7 @@
   "name": "pwa-template",
   "version": "0.0.1",
   "title": "PWA Template",
+  "shortName": "PWA",
   "description": "a vanilla pwa template",
   "author": "Quinten Clause",
   "scripts": {
@@ -28,6 +29,7 @@
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "babel-loader": "^8.0.6",
+    "favicons-webpack-plugin": "^1.0.2",
     "html-webpack-plugin": "^3.2.0",
     "terser-webpack-plugin": "^2.2.2",
     "webpack": "^4.41.2",
