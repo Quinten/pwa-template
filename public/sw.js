@@ -34,6 +34,7 @@ const PRECACHE_URLS = [
     'mstile-310x310.png',
     'manifest.json',
     'browserconfig.xml',
+    'styles.css',
     'index.js',
     'index.html',
 ];

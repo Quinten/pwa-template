@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const SimpleSW = require('simple-sw');
 
@@ -17,12 +18,13 @@ module.exports = (env, argv) => {
 
     let webpackConfig = {
 
-        entry: './src/index.js',
+        entry: {
+            'index': './src/index.js'
+        },
 
         output: {
             path: path.resolve(__dirname, 'public'),
-            publicPath: './',
-            filename: 'index.js'
+            publicPath: ''
         },
 
         module: {
@@ -33,14 +35,40 @@ module.exports = (env, argv) => {
                     use: {
                         loader: 'babel-loader'
                     }
-                }
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        'style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: true
+                            }
+                        }
+                    ],
+                    include: /_.+\.css$/
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader'
+                    ],
+                    exclude: /_.+\.css$/
+                },
             ]
         },
         plugins: [
+            new MiniCssExtractPlugin({
+                filename: 'styles.css'
+            }),
             new HtmlWebpackPlugin({
                 ...config,
-                template: 'src/index.html'
+                template: './src/index.html'
             }),
+            // TODO: Update plugin when https://github.com/jantimon/favicons-webpack-plugin/pull/173 is merged and released
             new FaviconsWebpackPlugin({
                 logo: './src/icon.svg',
                 mode: 'webapp',
